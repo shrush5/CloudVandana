@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: lightblue;
+        }
+        h1{
+            text-align: center;
+        }
+        form{
+            background-color: #fff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        select,
+        input[type="email"],
+        input[type="tel"]{
+            width: 98%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="checkbox"]{
+            margin-right: 5px;
+            
+        }
+        input[type="submit"],
+        input[type="reset"]{
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover,
+        input[type="reset"]:hover{
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Survey Form</h1>
+    <form id="surveyForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required><br>
+
+        <label for="country">Country:</label>
+        <select id="country" required>
+            <option value="USA">India</option>
+            <option value="Canada">Canada</option>
+            <option value="Canada">USA</option>
+            <option value="Canada">Singapore</option>
+            <option value="Canada">Malasia</option>
+        </select><br>
+
+        <label>Gender:</label>
+        <input type="checkbox" id="male" value="Male">
+        <label for="male">Male</label>
+        <input type="checkbox" id="female" value="Female">
+        <label for="female">Female</label><br>
+
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" required><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+
+    <script>
+        document.getElementById('surveyForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const dob = document.getElementById('dob').value;
+            const country = document.getElementById('country').value;
+            const gender = document.querySelectorAll('input[type="checkbox"]:checked');
+            const profession = document.getElementById('profession').value;
+            const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
+
+            let genderValues = [];
+            gender.forEach(g => {
+                genderValues.push(g.value);
+            });
+
+            const message = `First Name: ${firstName}\nLast Name: ${lastName}\nDate of Birth: ${dob}\nCountry: ${country}\nGender: ${genderValues.join(', ')}\nProfession: ${profession}\nEmail: ${email}\nMobile Number: ${mobile}`;
+
+            alert(message);
+            document.getElementById('surveyForm').reset();
+        });
+    </script>
+    <footer style="text-align: center; background-color: #333; color: #fff; padding: 10px;">
+        &copy; 2023 CloudVandana. All Rights Reserved.
+
+    </footer>
+</body>
+</html>
